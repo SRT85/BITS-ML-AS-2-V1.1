@@ -99,9 +99,15 @@ if uploaded_file is not None:
     # ------------------------------
     st.subheader("Confusion Matrix")
 
-    cm = confusion_matrix(y, y_pred)
-    st.write(cm)
+    #cm = confusion_matrix(y, y_pred)
+    #st.write(cm)
+    labels = sorted(set(y))  # or your class names list
 
+    cm = confusion_matrix(y, y_pred)
+    cm_df = pd.DataFrame(cm, index=labels, columns=labels)
+
+    st.subheader("Confusion Matrix")
+    st.dataframe(cm_df)
     # ------------------------------
     # Classification Report
     # ------------------------------
