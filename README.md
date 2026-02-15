@@ -1,9 +1,6 @@
 # BITS-ML-AS-2-V1.1
 BITS MTECH AIML Semester 1 ML assignment 2 (15-Feb-2026)
 
-# BITS-ML-AS-2
-BITS MTECH AIML Semester 1 ML assignment 2 (15-Feb-2026)
-
 a. Problem statement
 ====================
 Step 1: Dataset choice
@@ -31,7 +28,12 @@ For each of the models above, calculate the following evaluation metrics:
 
 b. Dataset description [ 1 mark ]
 ====================================
-Seven different types of dry beans were used in this research, taking into account the features such as form, shape, type, and structure by the market situation. A computer vision system was developed to distinguish seven different registered varieties of dry beans with similar features in order to obtain uniform seed classification. For the classification model, images of 13,611 grains of 7 different registered dry beans were taken with a high-resolution camera. Bean images obtained by computer vision system were subjected to segmentation and feature extraction stages, and a total of 16 features; 12 dimensions and 4 shape forms, were obtained from the grains.
+Seven different types of dry bean’s features such as form, shape, type, and structure are present. And a total of 16 features; 12 dimensions and 4 shape forms, were obtained from the grains.
+The Dry Bean dataset was selected because it is a well-known multiclass classification
+dataset with sufficient features and instances to evaluate multiple machine learning
+algorithms. Its clean tabular structure and balanced classes make it suitable for
+comparing model performance using metrics such as Accuracy, AUC, Precision, Recall,
+F1 Score, and MCC.
 
 c. Models used: [ 6 marks - 1 marks for all the metrics for each model ]
 ========================================================================
@@ -59,4 +61,9 @@ dataset. [ 3 marks ]
 | XGBoost (Ensemble) | Performance close to Random Forest, highest AUC among ensemble models. |
 
 Streamlit URL:
-https://bits-ml-as-2-vnmpvtkksnxuzrgwua2dsw.streamlit.app
+https://bits-ml-as-2-v11-afwxmwqthlowzsodwczcs6.streamlit.app/
+
+Note:
+Instead of XGBoost, used Gradient Boosting. Kept the naming as XGBoost due to proble requirement. 
+XGBoost should be read as Grandient Boosting through out all the documents, and soruce codes.
+Reason: As I am using the office laptop, the security policy does not allow to use brew to install the dependencies required for the package XGBoost. Hence, used Gradient Boosting.
