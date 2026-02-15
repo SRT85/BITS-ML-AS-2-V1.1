@@ -29,10 +29,10 @@ model_option = st.selectbox(
     (
         "Logistic Regression",
         "Decision Tree",
-        "KNN",
-        "Naive Bayes",
-        "Random Forest",
-        "XGBoost"
+        "K-Nearest Neighbors",
+        "Naive Bayes (Gaussian)",
+        "Random Forest (Ensemble)",
+        "XGBoost/Gradient Boosting (Ensemble)"
     )
 )
 
@@ -44,13 +44,13 @@ def load_model(model_name):
         return joblib.load("models/logistic_regression.pkl")
     elif model_name == "Decision Tree":
         return joblib.load("models/decision_tree.pkl")
-    elif model_name == "KNN":
+    elif model_name == "K-Nearest Neighbors":
         return joblib.load("models/knn.pkl")
-    elif model_name == "Naive Bayes":
+    elif model_name == "Naive Bayes (Gaussian)":
         return joblib.load("models/naive_bayes.pkl")
-    elif model_name == "Random Forest":
+    elif model_name == "Random Forest (Ensemble)":
         return joblib.load("models/random_forest.pkl")
-    elif model_name == "XGBoost":
+    elif model_name == "XGBoost/Gradient Boosting (Ensemble)":
         return joblib.load("models/xgboost.pkl")
 
 # ------------------------------
@@ -65,7 +65,7 @@ if uploaded_file is not None:
     st.subheader("Uploaded Dataset Preview")
     st.write(df.head())
 
-    # Assume last column is target
+    #last column is target
     X = df.iloc[:, :-1]
     y = df.iloc[:, -1]
 
@@ -101,7 +101,7 @@ if uploaded_file is not None:
 
     #cm = confusion_matrix(y, y_pred)
     #st.write(cm)
-    labels = sorted(set(y))  # or your class names list
+    labels = sorted(set(y))
 
     cm = confusion_matrix(y, y_pred)
     cm_df = pd.DataFrame(cm, index=labels, columns=labels)
