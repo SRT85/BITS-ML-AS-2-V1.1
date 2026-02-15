@@ -17,9 +17,14 @@ from sklearn.metrics import (
 # ------------------------------
 # Page Title
 # ------------------------------
-st.title("Multiclass Classification Model Evaluation App")
+st.title("Multiclass Classification Model Evaluation App - Dry Bean Dataset")
 
 st.write("Upload test dataset (CSV) and evaluate selected model.")
+st.write("The last column of the uploaded dataset should be the target variable.")    
+st.write("Models available: Logistic Regression, Decision Tree, K-Nearest Neighbors, Naive Bayes (Gaussian), Random Forest (Ensemble), XGBoost/Gradient Boosting (Ensemble)")   
+st.write("Evaluation metrics include Accuracy, Precision, Recall, F1 Score, MCC, AUC Score, Confusion Matrix, and Classification Report.")  
+st.write("Ensure that the uploaded dataset has the same feature columns as the training data used for these models.")   
+
 
 # ------------------------------
 # Model Selection
@@ -56,6 +61,9 @@ def load_model(model_name):
 # ------------------------------
 # File Upload
 # ------------------------------
+st.subheader("Upload Test Dataset")
+st.write("Please upload a CSV file containing the test dataset. The last column should be the target variable, and the other columns should match the features used during model training.")    
+st.write("File available for download: [Test Dataset](https://github.com/SRT85/BITS-ML-AS-2-V1.1/blob/main/data/test.csv)")
 uploaded_file = st.file_uploader("Upload Test CSV File", type=["csv"])
 
 if uploaded_file is not None:
@@ -106,7 +114,7 @@ if uploaded_file is not None:
     cm = confusion_matrix(y, y_pred)
     cm_df = pd.DataFrame(cm, index=labels, columns=labels)
 
-    st.subheader("Confusion Matrix")
+    #st.subheader("Confusion Matrix")
     st.dataframe(cm_df)
     # ------------------------------
     # Classification Report
@@ -119,3 +127,5 @@ if uploaded_file is not None:
     report_dict = classification_report(y, y_pred, output_dict=True)
     report_df = pd.DataFrame(report_dict).transpose()
     st.dataframe(report_df)
+
+    st.subheader("Thank you! Model Evaluation Completed")
